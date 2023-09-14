@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Add from "./modules/notes/components/Add";
+import View from "./modules/notes/components/View";
+import { NoteDashBoard } from "./modules/notes/pages/NoteDashBoard";
+import { UserPage } from "./modules/user/pages/UserPage";
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<UserPage />} />
+      <Route path="/dashboard" element={<NoteDashBoard />}>
+        <Route path="add-note/:operationname" element={<Add />} />;
+        <Route path="view-all" element={<View />} />;
+      </Route>
+    </Routes>
   );
 }
 
